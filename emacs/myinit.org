@@ -1,0 +1,162 @@
+#+STARTUP: overview 
+#+PROPERTY: header-args :comments yes :results silent
+
+* interface tweaks
+  #+BEGIN_SRC emacs-lisp
+    (setq inhibit-startup-message t)
+    (tool-bar-mode -1)
+    (fset 'yes-or-no-p 'y-or-n-p)
+    (winner-mode 1)
+    (global-set-key (kbd "<f5>") 'revert-buffer)
+    (global-linum-mode 0)
+    ;(custom-set-variables
+    ;  '(initial-frame-alist (quote ((fullscreen . maximized)))))
+  #+END_SRC
+* which key
+  #+BEGIN_SRC emacs-lisp
+    (use-package which-key
+      :ensure t 
+      :config
+        (which-key-mode))
+  #+END_SRC
+* org-Mode
+** Tweaks
+   #+BEGIN_SRC emacs-lisp
+     (setq org-src-fontify-natively t)
+     (setq org-src-tab-acts-natively 0)
+
+   #+END_SRC
+** org-bullets
+   #+BEGIN_SRC emacs-lisp
+     (use-package org-bullets
+       :ensure t
+       :init
+         (add-hook 'org-mode-hook 'org-bullets-mode))
+   #+END_SRC
+** support 
+*** LATEX
+   #+BEGIN_SRC emacs-lisp
+    (use-package tex
+      :ensure auctex)
+   
+   #+END_SRC
+*** htmlize
+    #+BEGIN_SRC emacs-lisp
+     (use-package htmlize :ensure t)
+    
+    #+END_SRC
+
+* ivy/counsel/swiper
+  #+BEGIN_SRC emacs-lisp
+    (use-package counsel
+      :ensure t 
+      :init
+        (counsel-mode 1))
+    (use-package ivy
+      :ensure t 
+      :init
+        (ivy-mode 1))
+    (use-package swiper
+      :ensure t 
+      :bind 
+        (("C-s" . swiper)
+        ("C-r" . swiper)))
+  #+END_SRC
+
+* company
+  #+BEGIN_SRC emacs-lisp
+    (use-package company
+      :ensure t 
+      :config
+        (add-hook 'after-init-hook 'global-company-mode)     
+        (setq company-idle-delay 0)
+        (setq company-minimum-prefix-length 2)
+    )
+  #+END_SRC
+* Flycheck
+  #+BEGIN_SRC emacs-lisp
+    (use-package flycheck
+      :ensure t
+      :init
+      (global-flycheck-mode t))
+  #+END_SRC
+
+* lsp-language support protocol
+  ;;TODO: xwidget-webkit-mode
+  ;; sudo apt install  libwebkitgtk-dev
+  #+BEGIN_SRC emacs-lisp
+    (use-package lsp-mode
+      :ensure t 
+      :commands lsp-ui-mode
+    )
+    (use-package lsp-ui
+      :ensure t 
+      :commands lsp-ui-mode
+    )
+    (use-package company-lsp
+      :ensure t 
+      :commands company-lsp
+    )
+    (push 'company-lsp company-backends)
+
+  #+END_SRC
+
+* c++ 
+** cmake mode 
+   #+BEGIN_SRC emacs-lisp
+    ;; if cmake installed via pip3
+    (setq load-path (cons (expand-file-name  "/home/qq/.local/lib/python3.6/site-packages/cmake/data/share/cmake-3.13/editors/emacs/cmake-mode") load-path))
+    (use-package cmake-mode
+      :ensure t)
+  #+END_SRC
+** clangFormat
+  #+Begin_SRC emacs-lisp
+    (use-package clang-format
+     :ensure t
+     :config
+       (global-set-key (kbd "C-c i") 'clang-format-region)
+       (global-set-key (kbd "C-c u") 'clang-format-buffer)
+       (setq clang-format-style-option "llvm"))
+  #+END_SRC
+** rtags
+remeber to rtags-install
+ #+BEGIN_SRC emacs-lisp
+   (use-package rtags
+     :ensure t)
+ #+END_SRC
+** irony c++
+ #+BEGIN_SRC emacs-lisp
+   (use-package irony
+     :ensure t 
+     :config
+       (add-hook 'c++-mode-hook 'irony-mode)
+       (add-hook 'c-mode-hook 'irony-mode)
+       (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+   (use-package company-irony
+     :ensure t
+     :config 
+       (add-to-list 'company-backends 'company-irony))      
+   (use-package irony-eldoc
+     :ensure t
+     :config
+       (add-hook 'irony-mode-hook #'irony-eldoc))
+  #+END_SRC
+** rainbow-delimiters
+ #+BEGIN_SRC emacs-lisp
+   (use-package rainbow-delimiters
+     :ensure t
+     :config
+       (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+ #+END_SRC
+** cmake-ide 
+ #+BEGIN_SRC emacs-lisp
+   (use-package cmake-ide
+     :ensure t)
+   (cmake-ide-setup)
+ #+END_SRC
+** iasm-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package nasm-mode
+        :ensure t)
+
+   #+END_SRC

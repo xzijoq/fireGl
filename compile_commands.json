@@ -1,0 +1,25 @@
+[
+{
+  "directory": "/home/qq/fireGl/build",
+  "command": "/usr/bin/c++   -I../include -I../lib  -g   -o CMakeFiles/ogl.dir/src/main.cpp.o -c /home/qq/fireGl/src/main.cpp",
+  "file": "/home/qq/fireGl/src/main.cpp"
+},
+
+{
+  "directory": "/home/qq/fireGl/build",
+  "command": "/usr/bin/cc  -I../include -I../lib  -g   -o CMakeFiles/ogl.dir/src/glad.c.o   -c /home/qq/fireGl/src/glad.c",
+  "file": "/home/qq/fireGl/src/glad.c"
+},
+
+{
+  "directory": "/home/qq/fireGl/build",
+  "command": "/usr/bin/c++   -I../include -I../lib  -g   -o CMakeFiles/ogl.dir/src/initWindow.cpp.o -c /home/qq/fireGl/src/initWindow.cpp",
+  "file": "/home/qq/fireGl/src/initWindow.cpp"
+},
+
+{
+  "directory": "/home/qq/fireGl/build",
+  "command": "/usr/bin/c++   -I../include -I../lib  -g   -o CMakeFiles/ogl.dir/src/glProg.cpp.o -c /home/qq/fireGl/src/glProg.cpp",
+  "file": "/home/qq/fireGl/src/glProg.cpp"
+}
+]

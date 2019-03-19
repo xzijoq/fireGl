@@ -1,0 +1,7 @@
+* This opengl project is working my using emacs and cmake without any ide
+** not much just a working template with complier flags and all
+** sudo apt-get install xorg-dev libglu1-mesa-dev
+** to generate glfw shared libs use cmake -DBUILD_SHARED_LIBS=ON
+** gslang validator [[https://github.com/KhronosGroup/glslang/releases/tag/master-tot]link]
+
+
