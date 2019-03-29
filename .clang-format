@@ -5,5 +5,10 @@ AlignOperands: 'true'
 BreakBeforeBraces: Allman
 SpacesInParentheses: 'true'
 SpacesInSquareBrackets: 'true'
-
+AllowAllParametersOfDeclarationOnNextLine: 'false'
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: 'true'
+AllowShortLoopsOnASingleLine: 'true'
+IndentWidth: '2'
+AllowShortBlocksOnASingleLine: 'true'
 ...

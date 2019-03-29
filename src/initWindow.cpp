@@ -19,8 +19,7 @@ void initWinGlfw()
   if ( !window ) cout << "glfwWindow Creation Failed";
 
   glfwMakeContextCurrent( window );
-   gladLoadGLLoader( (GLADloadproc)glfwGetProcAddress );
-
+  gladLoadGLLoader( (GLADloadproc)glfwGetProcAddress );
 
   set_glfw_callbacks();
 }
@@ -28,7 +27,7 @@ void initWinGlfw()
 void win_close_glfwCB( GLFWwindow* win )
 {
   std::cout << "\n closing Glfw window: \n";
-  //glfwTerminate();
+  // glfwTerminate();	 //gives segFault as it's alreay destroyes prolyy
 }
 
 void err_glfwCB( int error, const char* description )
@@ -40,18 +39,16 @@ void key_glfwCB( GLFWwindow* window, int key, int scancode, int action,
                  int mods )
 {
   if ( key == GLFW_KEY_ESCAPE && action == GLFW_PRESS )
-  {
-    glfwSetWindowShouldClose( window, true );
-  }
+  { glfwSetWindowShouldClose( window, true ); }
 }
-void fb_resize_glfwCB(GLFWwindow* window, int width, int height)
+void fb_resize_glfwCB( GLFWwindow* window, int width, int height )
 {
-    glViewport(0,0,width,height);
+  glViewport( 0, 0, width, height );
 }
 void set_glfw_callbacks()
 {
   glfwSetWindowCloseCallback( window, win_close_glfwCB );
   glfwSetErrorCallback( err_glfwCB );
   glfwSetKeyCallback( window, key_glfwCB );
-  glfwSetFramebufferSizeCallback(window, fb_resize_glfwCB);
+  glfwSetFramebufferSizeCallback( window, fb_resize_glfwCB );
 }

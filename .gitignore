@@ -3,3 +3,4 @@ ipch/
 #*
 *~
 build/
+/.vs/slnx.sqlite
