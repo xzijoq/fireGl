@@ -68,3 +68,37 @@ std::string parseShader( const std::string &filepath )
   { ss << line << "\n"; }
   return ss.str();
 }
+
+
+
+std::string ProjDir()
+{  // This is Deadly Inefficeient, but does not contribute
+  std::string filePath = __FILE__;
+  std::string tr( "\\" );
+  std::string th( "\/" );
+  int         ls{0};
+  size_t      pos{0};
+  // For loop for windows repalce path
+  for ( auto i{0}; i < filePath.length(); i++ )
+  {
+    pos = filePath.find( tr );
+    if ( pos == std::string::npos ) { break; }
+    filePath.replace( pos, tr.length(), "\/" );
+  }
+
+  // remove from second last directory
+  for ( auto j{0}; j < 2; j++ )
+  {
+    for ( auto i{0}; i < filePath.length(); i++ )
+    {
+      pos = filePath.find( th, pos + 1 );
+      if ( pos != std::string::npos ) { ls = pos; }
+      if ( pos == std::string::npos )
+      {
+        filePath.erase( ls );
+        break;
+      }
+    }
+  }
+  return filePath;
+}

@@ -1,65 +1,30 @@
 
 #include <glad/glad.h>
 #include <glfw/glfw3.h>
-#include <filesystem>
 #include <iostream>
 #include <string>
 #include "user/data.h"
 #include "user/glProg.h"
 #include "user/initWindow.h"
 
-namespace fs = std::filesystem;
-using std::string;
 
-using std::cout;
+using std::string,std::cout;
+
 extern GLFWwindow * window;
 void                display();
 void                initGl();
 static unsigned int vbo{333}, vao{333}, ebo{333};
 
-std::string retS()
-{//This is Deadly Inefficeient, but does not contribute
-  std::string fp = __FILE__;
-  std::string tr( "\\" );
-  std::string th( "\/" );
-  int ls{0};
-  size_t pos{0};
-  // For loop for windows repalce path
-  for ( auto i{0}; i < fp.length(); i++ )
-  {
-    pos = fp.find( tr );
-    if ( pos == string::npos ) { break; }
-    fp.replace( pos, tr.length(), "\/" );
-  }
-
-  // remove from second last directory
-  for ( auto j{0}; j < 2; j++ )
-  {
-    for ( auto i{0}; i < fp.length(); i++ )
-    {
-      pos = fp.find( th, pos + 1 );
-
-      if ( pos != string::npos ) { ls = pos; }
-      if ( pos == string::npos )
-      {
-        fp.erase( ls, -12 );
-        break;
-      }
-    }
-  }
-  return fp;
-}
-
 //----------MAIN STARTS--------------------------
 
 int main()
 {
-  string wd = retS();
-
+  std::string Pd = ProjDir();
   initWinGlfw();
-  std::string vertex_shader_source = parseShader(wd + "/res/shaders/shader.vert" );
+  std::string vertex_shader_source =
+      parseShader( Pd + "/res/shaders/shader.vert" );
   std::string fragment_shader_source =
-      parseShader(wd + "/res/shaders/shader.frag" );
+      parseShader( Pd + "/res/shaders/shader.frag" );
   createProgram( vertex_shader_source, fragment_shader_source );
   std::cout << glGetString( GL_VERSION );
   static int width{333}, height{333};
@@ -108,6 +73,8 @@ void initGl()
 }
 
 //--------------------END MAIN------------------------------------
+
+
 /*
   glGenBuffers( 1, &ebo );
   glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, ebo );
