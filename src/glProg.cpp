@@ -6,9 +6,8 @@
 #include <sstream>
 #include <string>
 //#include "user/data.h"
-#include "user/initWindow.h"
-
 #include "user/glProg.h"
+#include "user/initWindow.h"
 
 unsigned int createProgram( const std::string &vertexShaderSource,
                             const std::string &fragmentShaderSource )
@@ -66,8 +65,6 @@ std::string parseShader( const std::string &filepath )
   }
   while ( getline( streamSh, line ) )  // takes line by like data (end of line)
                                        // from stream and put it into line
-  {
-    ss << line << "\n";
-  }
+  { ss << line << "\n"; }
   return ss.str();
 }
