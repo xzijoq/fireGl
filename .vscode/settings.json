@@ -1,5 +1,14 @@
 {
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
-  "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
+  "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
+  "C_Cpp.default.intelliSenseMode": "clang-x64",
+  "AllAutocomplete.minWordLength": 2,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontSize": 16,
+  "editor.fontWeight": "bold",
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontFamily": "Fira Code",
+  "terminal.integrated.fontWeight": "500",
+  "terminal.integrated.fontSize": 16
 }

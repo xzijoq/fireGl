@@ -3,5 +3,4 @@
 ** sudo apt-get install xorg-dev libglu1-mesa-dev
 ** to generate glfw shared libs use cmake -DBUILD_SHARED_LIBS=ON
 ** gslang validator [[https://github.com/KhronosGroup/glslang/releases/tag/master-tot]link]
-
-
+** vs code sync data in keep thats some int the middle of the this is 
